@@ -1,3 +1,15 @@
-.idea/
+# Credentials
+#envs/
+
+# Docker
+Dockerfile
+docker-compose.yaml
+.dockerignore
+
+# Git
 .git/
-envs/*.env
+.gitignore
+README.md
+
+# JetBrains
+.idea/

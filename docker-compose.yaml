@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  rest_api:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rest_api-container
+    env_file:
+      - envs/database.env
+    volumes:
+      - /etc/letsencrypt/archive:/app/certs/archive:ro
+      - /etc/letsencrypt/live:/app/certs/live:ro
+    networks:
+      nginx-network:
+        ipv4_address: 172.30.0.10
+
+networks:
+  nginx-network:
+    external: true
+    name: nginx-net
+    ipam:
+      driver: bridge
+      config:
+        - subnet: 172.30.0.1/16
